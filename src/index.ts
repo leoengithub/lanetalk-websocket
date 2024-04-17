@@ -28,7 +28,7 @@ const useCentrifuge = ({
     // start subscription to channel
     subscription.subscribe();
 
-    centrifuge.on('connect', () => {
+    centrifuge.on('connected', () => {
       setConnected(true);
 
       centrifuge
@@ -58,7 +58,7 @@ const useCentrifuge = ({
     });
 
     // Handle disconnection
-    centrifuge.on('disconnect', () => {
+    centrifuge.on('disconnected', () => {
       // onClose();
       setConnected(false);
     });
