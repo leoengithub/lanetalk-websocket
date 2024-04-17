@@ -1,6 +1,6 @@
 {
   "name": "lanetalk-websocket",
-  "version": "2.0.1",
+  "version": "1.0.1",
   "description": "A React library to connect a Centrifuge server using websocket.",
   "main": "dist/index.js",
   "repository": {
