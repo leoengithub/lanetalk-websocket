@@ -27,4 +27,5 @@ export default {
     babel({ babelHelpers: 'bundled' }),
     terser(),
   ],
+  external: ['react', 'react-dom'],
 };
