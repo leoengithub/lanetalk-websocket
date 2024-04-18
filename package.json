@@ -2,7 +2,12 @@
   "name": "lanetalk-websocket",
   "version": "1.0.2",
   "description": "A React library to connect a Centrifuge server using websocket.",
-  "main": "dist/index.js",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/leoengithub/lanetalk-websocket.git"
@@ -14,7 +19,8 @@
     "dev": "vite",
     "build": "tsc && rollup -c",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "prepare": "npm run build"
   },
   "dependencies": {
     "lanetalk-centrifuge": "git+https://github.com/leoengithub/lanetalk-centrifuge-js.git",
@@ -23,8 +29,10 @@
   },
   "devDependencies": {
     "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^11.1.6",
     "@types/react": "^18.2.66",
     "@types/react-dom": "^18.2.22",
     "@typescript-eslint/eslint-plugin": "^7.2.0",
@@ -33,7 +41,9 @@
     "eslint": "^8.57.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
+    "rollup": "^4.14.3",
     "rollup-plugin-peer-deps-external": "^2.2.4",
+    "tslib": "^2.6.2",
     "typescript": "^5.2.2",
     "uuid": "^9.0.1"
   }
