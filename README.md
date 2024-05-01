@@ -46,7 +46,7 @@ To use the `useWebsocket` hook in your React project, follow these steps:
    - `url`: WebSocket server URL.
    - `apiKey`: API key for authentication.
    - `channel`: The channel you want to subscribe to.
-   - `debug`: Enable debug mode for additional logging.
+   - `debug`: Enable debug mode for additional logging. This includes more verbose information about connection status changes and message publications.
 
 3. **Using the Hook Data:**
    The hook returns an object containing:

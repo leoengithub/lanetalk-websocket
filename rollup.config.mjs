@@ -9,6 +9,11 @@ export default {
   input: './src/index.ts',
   output: [
     {
+      file: 'dist/index.js',
+      format: 'es',
+      sourcemap: true,
+    },
+    {
       file: 'dist/index.cjs.js', // Assuming package.json has "main": "dist/index.cjs.js"
       format: 'cjs',
       sourcemap: true,
