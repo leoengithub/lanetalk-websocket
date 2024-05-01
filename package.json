@@ -18,10 +18,11 @@
   "scripts": {
     "build": "tsc && rollup -c",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "prepare": "npm run build"
+    "prepare": "npm run build",
+    "dev": "esbuild src/index.ts --bundle --outfile=dist/hook.js --servedir=dist/ --serve=2000"
   },
   "dependencies": {
-    "lanetalk-centrifuge": "git+https://github.com/leoengithub/lanetalk-centrifuge-js.git",
+    "lanetalk-centrifuge-js": "git+https://github.com/leoengithub/lanetalk-centrifuge-js.git",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
@@ -36,6 +37,7 @@
     "@types/react-dom": "^18.2.22",
     "@typescript-eslint/eslint-plugin": "^7.2.0",
     "@typescript-eslint/parser": "^7.2.0",
+    "esbuild": "^0.20.2",
     "eslint": "^8.57.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.6",
