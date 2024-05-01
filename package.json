@@ -19,8 +19,7 @@
     "build": "tsc && rollup -c",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "prepare": "npm run build",
-    "get-library": "esbuild src/index.ts --bundle --outfile=dist/hook.js",
-    "dev": "npm init vite@latest -- --template react-ts && npm run get-library && yarn && yarn dev"
+    "dev": "npm init vite@latest -- --template react-ts && yarn && yarn dev"
   },
   "dependencies": {
     "lanetalk-centrifuge-js": "git+https://github.com/leoengithub/lanetalk-centrifuge-js.git",
