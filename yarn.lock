@@ -1364,7 +1364,7 @@ keyv@^4.5.3:
 
 "lanetalk-centrifuge-js@git+https://github.com/leoengithub/lanetalk-centrifuge-js.git":
   version "5.1.1"
-  resolved "git+https://github.com/leoengithub/lanetalk-centrifuge-js.git#d50e9f1ab3aec33e4f6e96ce49b2c21ff0ff4ed4"
+  resolved "git+https://github.com/leoengithub/lanetalk-centrifuge-js.git#9571962f504e8f16f408889d277bef2453287e3f"
   dependencies:
     events "^3.3.0"
 
