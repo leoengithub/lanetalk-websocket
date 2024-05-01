@@ -1,39 +1,30 @@
-import { useEffect, useState } from 'react';
-import { Centrifuge, PublicationContext } from 'lanetalk-centrifuge-js';
+import React from 'react';
+import { Centrifuge, PublicationContext, Subscription } from 'lanetalk-centrifuge-js';
 
 const useCentrifuge = ({
   url,
   channel,
   apiKey,
   debug = false,
+  ref = null,
 }: {
   url: string;
   channel: string;
   apiKey: string;
-  debug: boolean;
+  debug?: boolean;
+  ref?: React.Ref<{
+    connection: Centrifuge;
+    subscription: Subscription;
+  } | null>;
 }) => {
-  const [isConnected, setConnected] = useState<boolean>(false);
-  const [lastMessage, setLastMessage] = useState<PublicationContext>();
+  const [isConnected, setConnected] = React.useState<boolean>(false);
+  const [lastMessage, setLastMessage] = React.useState<PublicationContext>();
+  const centrifugeInstance = React.useRef<{
+    connection: Centrifuge;
+    subscription: Subscription;
+  } | null>(null);
 
-  //       centrifuge.on('connecting', function (ctx) {
-  //         console.log(`connecting: ${ctx.code}, ${ctx.reason}`);
-  //       }).on('connected', function (ctx) {
-  //         console.log(`connected over ${ctx.transport}`);
-  //       }).on('disconnected', function (ctx) {
-  //         console.log(`disconnected: ${ctx.code}, ${ctx.reason}`);
-  //       }).connect();
-
-  //       sub.on('publication', function (ctx) {
-  //           console.log(ctx);
-  //         }).on('subscribing', function (ctx) {
-  //           console.log(`subscribing: ${ctx.code}, ${ctx.reason}`);
-  //         }).on('subscribed', function (ctx) {
-  //           console.log('subscribed', ctx);
-  //         }).on('unsubscribed', function (ctx) {
-  //           console.log(`unsubscribed: ${ctx.code}, ${ctx.reason}`);
-  //         }).subscribe();
-
-  useEffect(() => {
+  React.useEffect(() => {
     const centrifuge = new Centrifuge(url, {
       debug,
       data: {
@@ -69,12 +60,19 @@ const useCentrifuge = ({
       })
       .subscribe();
 
+    centrifugeInstance.current = {
+      connection: centrifuge,
+      subscription: subscription,
+    };
+
     return () => {
       subscription.unsubscribe();
       subscription.removeAllListeners();
       centrifuge.disconnect();
     };
   }, [url, channel, debug, apiKey]);
+
+  React.useImperativeHandle(ref, () => centrifugeInstance.current);
 
   return {
     isConnected,
